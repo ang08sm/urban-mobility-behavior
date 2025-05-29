@@ -1,0 +1,35 @@
+# .gitignore
+
+# Python virtual environments
+venv/
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+ENV/
+
+# Data
+/data/external
+/data/processed
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code settings
+/.vscode
+*.code-workspace
+
+# Models and cache
+/models
+/cache
+
+# OS Files
+.DS_Store
+Thumbs.db
