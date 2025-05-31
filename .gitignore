@@ -13,8 +13,7 @@ ENV/
 # Data
 /data/external
 /data/processed
-/data/raw/cdr_lucknow_20250531_171124.csv
-/data/raw/gps_lucknow_20250531_171124.csv
+/data/raw/
 
 # Logs and databases
 *.log
