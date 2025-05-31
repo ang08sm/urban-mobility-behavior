@@ -15,6 +15,3 @@ A system to analyze mobility patterns using multi-modal data fusion for intellig
 - FastAPI
 - Docker + Docker Compose
 - PostgreSQL / Redis (for state management)
-
-## Folder Structure
-See `/README.md` for full structure.
