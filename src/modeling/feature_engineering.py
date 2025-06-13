@@ -30,6 +30,12 @@ def build_od_flows():
     # Determine origin/destination tower for each event
     df["origin_tower"] = df.groupby("user_id")["tower_id"].shift()
     df["dest_tower"] = df["tower_id"]
+
+    print("Total records before dropna:", df.shape[0])
+    print("Unique users:", df['user_id'].nunique())
+    print("CDRs per user (sample):")
+    print(df.groupby("user_id").size().describe())
+
     df = df.dropna(subset=["origin_tower"])
 
     # Floor timestamp to the hour

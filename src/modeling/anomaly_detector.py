@@ -3,7 +3,6 @@ from pathlib import Path
 from sklearn.ensemble import IsolationForest
 import matplotlib.pyplot as plt
 
-# ── Fix PROJECT_ROOT to point to repo root, not src/ ──
 PROJECT_ROOT   = Path(__file__).resolve().parent.parent.parent
 PROCESSED_DIR  = PROJECT_ROOT / "data" / "processed"
 
@@ -18,19 +17,19 @@ def detect_hourly_demand_anomalies():
     """
     od_path = PROCESSED_DIR / "od_flows.parquet"
     if not od_path.exists():
-        print(f"⚠️  File not found: {od_path}")
+        print(f" File not found: {od_path}")
         return
 
     print(" Loading OD flows...")
     od = pd.read_parquet(od_path)
     od["hour"] = pd.to_datetime(od["hour"])
 
-    # Aggregate total OD count per hour
+    # Aggregate
     hourly = od.groupby("hour")["count"].sum().reset_index(name="total_count")
     hourly.sort_values("hour", inplace=True)
     hourly.reset_index(drop=True, inplace=True)
 
-    # Fit IsolationForest on total_count
+    # Fit IsolationForest
     X = hourly[["total_count"]]
     print("Fitting IsolationForest for anomaly detection...")
     iso = IsolationForest(contamination=0.05, random_state=42)
